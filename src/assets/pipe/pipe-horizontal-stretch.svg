@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 112.5 29.924"
+  width="100%"
+  height="32"
+  preserveAspectRatio="none"
+  aria-labelledby="title desc" role="img">
+  <title id="title">Horizontal Pipe (Stretchable from Base)</title>
+  <desc id="desc">Derived from the provided base SVG; stretches horizontally while keeping fixed thickness.</desc>
+  <defs>
+    <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse"
+      x1="56.25" y1="0" x2="56.25" y2="29.924">
+      <stop offset="0.01" stop-color="#646566" />
+      <stop offset="0.16" stop-color="#909091" />
+      <stop offset="0.49" stop-color="#E0E0E0" />
+      <stop offset="1"   stop-color="#646566" />
+    </linearGradient>
+  </defs>
+  <g id="Group_Horizontal_Short">
+    <path fill="url(#SVGID_1_)" d="M112.5,29.924H0V0h112.5V29.924z" />
+  </g>
+</svg>

@@ -1,6 +1,8 @@
 import { Box } from "@mui/material";
+import { useStation } from "src/hooks/station-service";
 
 export const StatusScreen: React.FC = () => {
+    const { station } = useStation();
     return (
         <Box
             sx={{

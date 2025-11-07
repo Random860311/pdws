@@ -26,10 +26,10 @@ export function emitAsync<T = any>(event: AppEventValue, data?: any): Promise<Re
     console.log("Emit event: ", event);
     return new Promise((resolve, reject) => {
         socket.emit(event, data, (response: ResponseDto) => {
-            if (response?.status !== "success") {
+            if (response?.status_code !== "success") {
                 console.log(JSON.stringify(response));
-                const msg = response.message || "Unknown error";
-                reject(new ApiError(msg, response, response?.status));
+                //const msg = response.message || "Unknown error";
+                reject(new ApiError("Unknown error", response, response?.status_code));
             } else {
                 resolve(response);
             }
@@ -43,7 +43,7 @@ export function subscribe<T = any>(key: AppEventValue, callback: Callback<T>) {
         keyListeners.set(key, new Set());
 
         socket.on(key, (event: T) => {
-            console.log("Socket event received: ", key);
+            //console.log("Socket event received: ", key);
             const listeners = keyListeners.get(key);
             if (listeners) {
                 try {

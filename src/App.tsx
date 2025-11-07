@@ -36,7 +36,7 @@ export const AppContent = () => {
 
 function App() {
     return (
-        <Box sx={{ height: "100%" }}>
+        <Box sx={{ height: "100dvh" }}>
             <React.StrictMode>
                 <ErrorBoundary fallback={<h1>Fatal app error.</h1>}>
                     <GlobalErrorProvider>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 29.7 112.5"
+     width="32"             
+     height="100%"
+     preserveAspectRatio="none"
+     aria-labelledby="title desc" role="img">
+  <title id="title">Vertical Pipe (Stretchable)</title>
+  <desc id="desc">SVG that keeps a fixed thickness and stretches vertically to the container height.</desc>
+  <defs>
+    <linearGradient id="pipeGradient" gradientUnits="userSpaceOnUse" x1="0" y1="56.25" x2="29.6997" y2="56.25">
+      <stop offset="0.01" stop-color="#646566" />
+      <stop offset="0.18" stop-color="#959595" />
+      <stop offset="0.5"  stop-color="#E0E0E0" />
+      <stop offset="1"    stop-color="#666666" />
+    </linearGradient>
+  </defs>
+  <g id="Group_Vertical_Short">
+    <path fill="url(#pipeGradient)" d="M0,112.5V0h29.7v112.5H0z" />
+  </g>
+</svg>

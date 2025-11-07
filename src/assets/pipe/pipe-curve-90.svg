@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="196.174 99.1003 70 70" width="70px" height="70px">
+  <radialGradient id="bevel" cx="144.7432" cy="318.877" r="23.7788" gradientTransform="matrix(-2.924072, -0.205741, 0.213338, -2.795644, 598.873962, 1027.596591)" gradientUnits="userSpaceOnUse">
+    <stop offset="0" style="stop-color:#595959"/>
+    <stop offset="0.1" style="stop-color:#666767"/>
+    <stop offset="0.22" style="stop-color:#888989"/>
+    <stop offset="0.4" style="stop-color:#BEBEBE"/>
+    <stop offset="0.53" style="stop-color:#E0E0E0"/>
+    <stop offset="0.64" style="stop-color:#C3C3C3"/>
+    <stop offset="0.89" style="stop-color:#787878"/>
+    <stop offset="1" style="stop-color:#545454"/>
+  </radialGradient>
+  <path d="M 247.347 169.444 C 213.304 169.444 177.521 147.002 177.521 102.554 L 236.705 102.388 C 237.942 110.207 241.317 112.093 247.158 112.6 C 247.844 127.5 247.347 169.444 247.347 169.444 Z" style="fill-rule: nonzero;" fill="url(#bevel)" transform="matrix(1, 0, 0, 1.0439029932022095, 18.652999877929688, -7.78280782699585)"/>
+</svg>

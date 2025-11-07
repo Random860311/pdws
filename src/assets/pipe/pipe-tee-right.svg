@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="174.241 390.415 112.5 112.4993" width="112.5px" height="112.499px">
+  <defs>
+    <linearGradient id="gradient-1" x1="0" y1="56.25" x2="56.25" y2="56.25" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1, 0, 0, 0.957943, 155.587509, 381.450806)">
+      <stop offset="0.01" stop-color="#646566"/>
+      <stop offset="0.18" stop-color="#959595"/>
+      <stop offset="0.5" stop-color="#E0E0E0"/>
+      <stop offset="1" stop-color="#666666"/>
+    </linearGradient>
+    <linearGradient id="gradient-2" x1="70.3" y1="84.375" x2="70.3" y2="28.125" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1, 0, 0, 0.957943, 155.587509, 381.450806)">
+      <stop offset="0.01" stop-color="#646566"/>
+      <stop offset="0.16" stop-color="#909091"/>
+      <stop offset="0.49" stop-color="#E0E0E0"/>
+      <stop offset="1" stop-color="#646566"/>
+    </linearGradient>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1.0439029932022095, 18.652999877929688, -7.78280782699585)">
+    <polygon fill="url(#gradient-1)" points="211.838 408.393 211.838 381.451 155.588 381.451 155.588 489.219 211.838 489.219 211.838 462.277" style="stroke-width: 0.979;"/>
+    <polygon fill="url(#gradient-2)" points="268.088 408.393 211.4 408.393 183.764 435.57 211.889 462.277 268.088 462.277" style="stroke-width: 0.979;"/>
+  </g>
+</svg>
