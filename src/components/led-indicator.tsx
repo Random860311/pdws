@@ -1,4 +1,4 @@
-import { Box, Stack, FormLabel } from "@mui/material";
+import { Box, FormLabel } from "@mui/material";
 
 export interface LedIndicatorProps {
     color: "green" | "red" | "yellow" | "gray";
@@ -15,7 +15,7 @@ export const LedIndicator: React.FC<LedIndicatorProps> = ({ color, size = 16, la
     };
 
     return (
-        <Stack direction="row" alignItems="center" spacing={1}>
+        <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 1, width: "fit-content" }}>
             <FormLabel component="legend">{label}</FormLabel>
             <Box
                 sx={{
@@ -26,6 +26,6 @@ export const LedIndicator: React.FC<LedIndicatorProps> = ({ color, size = 16, la
                     boxShadow: `0 0 6px ${colorMap[color]}`,
                 }}
             />
-        </Stack>
+        </Box>
     );
 };

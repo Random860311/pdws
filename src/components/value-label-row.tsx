@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Typography, FormLabel } from "@mui/material";
+import { Typography, FormLabel, Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
 export interface ValueLabelRowProps {
@@ -10,22 +10,15 @@ export interface ValueLabelRowProps {
 export const ValueLabelRow: React.FC<ValueLabelRowProps> = ({ value, label }) => {
     if (value) {
         return (
-            <Stack direction="row" justifyContent="start" sx={{ width: "100%" }}>
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 1, width: "fit-content" }}>
                 <FormLabel component="legend" sx={{ minWidth: "50%" }}>
                     {label}:
                 </FormLabel>
                 <Typography variant="body1" sx={{ maxWidth: "50%", textAlign: "start" }}>
                     {value}
                 </Typography>
-            </Stack>
+            </Box>
         );
     }
     return <Outlet />;
 };
-/*className="motor-card-label" 
-return (
-        <div className="motor-card-row">
-            <span className="motor-card-label">{label}:</span>
-            <span className="motor-card-value">{value}</span>
-        </div>
-    ); */

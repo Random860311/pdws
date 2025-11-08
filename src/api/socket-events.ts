@@ -3,4 +3,6 @@ export const AppEvent = {
     ApplicationError: "app:error",
 
     StationEmitUpdate: "station:emit_update",
+
+    SystemSetMode: "system:set_mode",
 } as const;

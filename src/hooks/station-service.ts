@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { StationDto } from "./../api/dto/station-dto";
-import { AppEvent, subscribe, unsubscribe } from "src/api";
+import { AppEvent, stationApi, subscribe, unsubscribe, useApiCall } from "src/api";
 
 export function useStation() {
     const [station, setStation] = useState<StationDto | null>(null);
+    const setSystemMode = useApiCall("Failed to set system mode", stationApi.setSystemMode);
 
     useEffect(() => {
         const handleStationUpdated = (newStation: StationDto) => {
@@ -19,5 +20,6 @@ export function useStation() {
 
     return {
         station,
+        setSystemMode,
     };
 }

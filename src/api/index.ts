@@ -6,5 +6,7 @@ import type { ResponseDto, AppEventDto } from "./dto";
 
 import { useApiRunner, useApiCall } from "./utils";
 
-export { useApiRunner, useApiCall, subscribe, emitAsync, unsubscribe, AppEvent };
+import { stationApi } from "./station-api";
+
+export { useApiRunner, useApiCall, subscribe, emitAsync, unsubscribe, AppEvent, stationApi };
 export type { AppEventKey, AppEventValue, ResponseDto, AppEventDto };
