@@ -1,17 +1,18 @@
 import React from "react";
-import { Typography, FormLabel, Box } from "@mui/material";
+import { Typography, FormLabel, Box, Theme, SxProps } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
 export interface ValueLabelProps {
     value?: string;
     color?: string;
     label: string;
+    sx?: SxProps<Theme>;
 }
 
-export const ValueLabel: React.FC<ValueLabelProps> = ({ value, label, color }) => {
+export const ValueLabel: React.FC<ValueLabelProps> = ({ value, label, color, sx = {} }) => {
     if (value) {
         return (
-            <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 1, width: "100%" }}>
+            <Box sx={{ ...sx, ...{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 1, width: "100%" } }}>
                 <FormLabel component="legend" sx={{ width: "fit-content", textAlign: "start", color: color }}>
                     {label}:
                 </FormLabel>

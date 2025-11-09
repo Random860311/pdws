@@ -29,7 +29,21 @@ export const AppContent = () => {
             <TopAppBar onMenuClick={() => setDrawerOpen(true)} actions={actions} title={title} />
             <Toolbar /> {/* Spacer to push content below fixed AppBar */}
             <DrawerMenu open={drawerOpen} onClose={() => setDrawerOpen(false)} onNavigate={(route) => navigate(route)} />
-            <Outlet context={ctx} />
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%" }}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        gap: 4,
+                        border: "2px solid #1976d2",
+                        borderRadius: 2,
+                        p: 3,
+                        height: "480px",
+                        width: "800px",
+                    }}
+                >
+                    <Outlet context={ctx} />
+                </Box>
+            </Box>
         </Box>
     );
 };

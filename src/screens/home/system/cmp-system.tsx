@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { SystemDto } from "src/api/dto";
 import { PipeHorizontal, PipeTeeRight, PumpDefault, PumpError, PumpRunning } from "src/assets";
 import { LedLabel, ValueLabel } from "src/components";
@@ -11,7 +11,7 @@ function renderPump(sys: SystemDto) {
     return <PumpDefault height={100} width={40} />;
 }
 
-function renderPriority(sys: SystemDto) {
+function renderPriority(sys: SystemDto): "Lead" | "Lag" | "Lag 2" | "Lag 3" | "Out" {
     switch (sys.priority) {
         case 0:
             return "Lead";
@@ -26,7 +26,7 @@ function renderPriority(sys: SystemDto) {
     }
 }
 
-function renderMode(sys: SystemDto) {
+function renderMode(sys: SystemDto): "Hand" | "Auto" | "Off" {
     switch (sys.mode) {
         case 1:
             return "Hand";
@@ -53,7 +53,7 @@ export const CmpSystem: React.FC<SystemProps> = ({ sys, onSetHand, onSetOff, onS
                 alignContent: "center",
                 paddingTop: 1,
                 paddingBottom: 1,
-                gap: 2,
+                gap: 1,
                 justifyContent: "space-between",
             }}
         >
@@ -86,36 +86,24 @@ export const CmpSystem: React.FC<SystemProps> = ({ sys, onSetHand, onSetOff, onS
                 <LedLabel label="Call to Run:" color={sys.call_to_run ? "green" : "gray"} />
                 <LedLabel label="Running:" color={sys.status === 1 ? "green" : "gray"} />
                 <LedLabel label="Faulted:" color={sys.has_alarm ? "red" : "gray"} />
+                <ValueLabel label="Priority" value={renderPriority(sys)} sx={{ mt: "auto" }} />
             </Box>
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-end",
-                    gap: 1,
-                }}
+            <ToggleButtonGroup
+                orientation="vertical"
+                exclusive
+                value={renderMode(sys)}
+                sx={{ paddingLeft: "8px", "& .MuiToggleButton-root": { width: "100%", height: "38px" }, gap: 1, pl: 1 }}
             >
-                <ValueLabel label="Priority" value={renderPriority(sys)} />
-                <ValueLabel label="Mode" value={renderMode(sys)} />
-            </Box>
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-end",
-                    gap: 1,
-                }}
-            >
-                <Button type="button" variant="outlined" onClick={onSetHand ?? undefined} sx={{ width: "100%" }}>
+                <ToggleButton value="Hand" onClick={onSetHand ?? undefined}>
                     Hand
-                </Button>
-                <Button type="button" variant="outlined" onClick={onSetAuto ?? undefined} sx={{ width: "100%" }}>
+                </ToggleButton>
+                <ToggleButton value="Auto" onClick={onSetAuto ?? undefined}>
                     Auto
-                </Button>
-                <Button type="button" variant="outlined" onClick={onSetOff ?? undefined} sx={{ width: "100%" }}>
+                </ToggleButton>
+                <ToggleButton value="Off" onClick={onSetOff ?? undefined}>
                     Off
-                </Button>
-            </Box>
+                </ToggleButton>
+            </ToggleButtonGroup>
         </Box>
     );
 };

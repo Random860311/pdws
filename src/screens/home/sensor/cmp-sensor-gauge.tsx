@@ -36,7 +36,7 @@ export const CmpGaugeSensor: React.FC<SensorGaugeProps> = ({ sensor }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                gap: 2,
+                gap: 4,
                 height: "fit-content",
             }}
         >
@@ -53,17 +53,15 @@ export const CmpGaugeSensor: React.FC<SensorGaugeProps> = ({ sensor }) => {
             >
                 <ValueLabel label="Max" value={String(sensor.value_scaled_max) + " psi"} />
                 {showStartHH && (
-                    <ValueLabel label="Start High High" value={String(sensor.alarm_start_high_high) + " psi"} color={sensor.is_high_high_active ? "red" : undefined} />
+                    <ValueLabel label="Start HH" value={String(sensor.alarm_start_high_high) + " psi"} color={sensor.is_high_high_active ? "red" : undefined} />
                 )}
-                {showStopHH && <ValueLabel label="Stop High High" value={String(sensor.alarm_stop_high_high) + " psi"} />}
-                {showStartH && <ValueLabel label="Start High" value={String(sensor.alarm_start_high) + " psi"} color={sensor.is_high_active ? "red" : undefined} />}
-                {showStopH && <ValueLabel label="Stop High" value={String(sensor.alarm_stop_high) + " psi"} />}
-                {showStopL && <ValueLabel label="Stop Low" value={String(sensor.alarm_stop_low) + " psi"} />}
-                {showStartL && <ValueLabel label="Start Low" value={String(sensor.alarm_start_low) + " psi"} color={sensor.is_low_active ? "red" : undefined} />}
-                {showStopLL && <ValueLabel label="Stop Low Low" value={String(sensor.alarm_stop_low_low) + " psi"} />}
-                {showStartLL && (
-                    <ValueLabel label="Start Low Low" value={String(sensor.alarm_start_low_low) + " psi"} color={sensor.is_low_low_active ? "red" : undefined} />
-                )}
+                {showStopHH && <ValueLabel label="Stop HH" value={String(sensor.alarm_stop_high_high) + " psi"} />}
+                {showStartH && <ValueLabel label="Start H" value={String(sensor.alarm_start_high) + " psi"} color={sensor.is_high_active ? "red" : undefined} />}
+                {showStopH && <ValueLabel label="Stop H" value={String(sensor.alarm_stop_high) + " psi"} />}
+                {showStopL && <ValueLabel label="Stop L" value={String(sensor.alarm_stop_low) + " psi"} />}
+                {showStartL && <ValueLabel label="Start L" value={String(sensor.alarm_start_low) + " psi"} color={sensor.is_low_active ? "red" : undefined} />}
+                {showStopLL && <ValueLabel label="Stop LL" value={String(sensor.alarm_stop_low_low) + " psi"} />}
+                {showStartLL && <ValueLabel label="Start LL" value={String(sensor.alarm_start_low_low) + " psi"} color={sensor.is_low_low_active ? "red" : undefined} />}
                 <ValueLabel label="Min" value={String(sensor.value_scaled_min) + " psi"} />
             </Box>
         </Box>
