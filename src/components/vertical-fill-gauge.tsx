@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import React from "react";
 
 export interface VerticalFillGaugeProps {
     value: number; // current value

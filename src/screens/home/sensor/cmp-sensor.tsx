@@ -13,6 +13,7 @@ export const CmpSensor: React.FC<SensorProps> = ({ sensor }) => {
                 display: "grid",
                 gridTemplateRows: "1fr",
                 gridTemplateColumns: "1fr",
+                alignSelf: "start",
             }}
         >
             <Box sx={{ display: "flex", width: "100%", gridRow: 1, gridColumn: 1, alignItems: "flex-end" }}>

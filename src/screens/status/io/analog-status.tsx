@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 import { AnalogIODto } from "src/api/dto";
-import { ValueLabelRow } from "src/components";
+import { ValueLabel } from "src/components";
 
 export interface AnalogStatusProps {
     label: string;

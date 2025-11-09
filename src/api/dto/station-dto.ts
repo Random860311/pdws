@@ -1,3 +1,4 @@
+import { AppSettingsDto } from "./app";
 import { BaseDto } from "./base-dto";
 import { SensorDto, SystemDto } from "./device";
 import { IOStatusDto } from "./io";
@@ -7,4 +8,5 @@ export interface StationDto extends BaseDto {
     pressure_sensor: SensorDto;
     additional_sensor?: SensorDto;
     io_status: IOStatusDto;
+    app_settings: AppSettingsDto;
 }

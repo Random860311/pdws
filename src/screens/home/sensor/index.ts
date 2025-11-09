@@ -1,2 +1,3 @@
 import { CmpSensor } from "./cmp-sensor";
-export { CmpSensor };
+import { CmpGaugeSensor } from "./cmp-sensor-gauge";
+export { CmpSensor, CmpGaugeSensor };
