@@ -34,7 +34,7 @@ export const HomeScreen: React.FC = () => {
                         <PipeVertical width={16} height="100%" />
                     </Box>
 
-                    <Box sx={{ display: "flex", flexDirection: "column", gap: 2, gridColumn: 1, gridRow: 1, minWidth: "360px" }}>
+                    <Box sx={{ display: "flex", flexDirection: "column", gridColumn: 1, gridRow: 1, minWidth: "360px" }}>
                         {station.systems.map((sys, i) => (
                             <System
                                 key={i}

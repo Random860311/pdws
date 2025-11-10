@@ -8,10 +8,11 @@ export const StatusScreen: React.FC = () => {
         <Box
             sx={{
                 display: "flex",
-                gap: 4,
                 flexDirection: "row",
+                gap: 4,
                 width: "100%",
                 height: "100%",
+                px: 2,
                 justifyContent: "space-evenly",
             }}
         >

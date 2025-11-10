@@ -12,9 +12,11 @@ export const DigitalIoStatus: React.FC<DigitalIoProps> = ({ io }) => {
                 display: "flex",
                 flexDirection: "row",
                 gap: 1,
-                border: "2px solid gray",
+                border: "1px solid gray",
                 borderRadius: 2,
                 p: 1,
+                alignItems: "center",
+                justifyContent: "center",
             }}
         >
             <LedLabel label={String(io.io_id) + ":"} color={io.value ? "green" : "gray"} />

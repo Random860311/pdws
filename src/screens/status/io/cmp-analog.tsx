@@ -15,7 +15,7 @@ export const AnalogIoStatus: React.FC<AnalogIoProps> = ({ io }) => {
                 flexDirection: "row",
                 gap: 1,
                 alignItems: "flex-start",
-                border: "2px solid gray",
+                border: "1px solid gray",
                 borderRadius: 2,
                 p: 1,
             }}

@@ -2,12 +2,17 @@ import { Box, Typography } from "@mui/material";
 import { AnalogIODto } from "src/api";
 import { AnalogIoStatus } from "./cmp-analog";
 import { Outlet } from "react-router-dom";
+import equal from "fast-deep-equal";
+import React from "react";
 
 export interface AnalogListProps {
     label: String;
     list: AnalogIODto[] | undefined;
 }
-export const AnalogListStatus: React.FC<AnalogListProps> = ({ label, list }) => {
+
+const areEqual = (prev: AnalogListProps, next: AnalogListProps) => prev.label === next.label && equal(prev.list, next.list);
+
+export const AnalogListStatus = React.memo(function AnalogListStatus({ label, list }: AnalogListProps) {
     return (
         <Box
             sx={{
@@ -23,4 +28,4 @@ export const AnalogListStatus: React.FC<AnalogListProps> = ({ label, list }) => 
             {list ? list.map((io, i) => <AnalogIoStatus key={i} io={io} />) : <Outlet />}
         </Box>
     );
-};
+}, areEqual);

@@ -92,7 +92,7 @@ export const CmpSystem: React.FC<SystemProps> = ({ sys, onSetHand, onSetOff, onS
                 orientation="vertical"
                 exclusive
                 value={renderMode(sys)}
-                sx={{ paddingLeft: "8px", "& .MuiToggleButton-root": { width: "100%", height: "38px" }, gap: 1, pl: 1 }}
+                sx={{ paddingLeft: "8px", "& .MuiToggleButton-root": { width: "100%", height: "32px" }, gap: 1, pl: 1 }}
             >
                 <ToggleButton value="Hand" onClick={onSetHand ?? undefined}>
                     Hand

@@ -6,6 +6,7 @@ export interface ValueLabelProps {
     value?: string;
     color?: string;
     label: string;
+    textSize?: number;
     sx?: SxProps<Theme>;
 }
 
