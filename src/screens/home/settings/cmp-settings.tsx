@@ -1,4 +1,6 @@
 import { Box } from "@mui/material";
+import equal from "fast-deep-equal";
+import React from "react";
 import { AppSettingsDto } from "src/api/dto";
 import { ValueLabel } from "src/components";
 
@@ -6,7 +8,9 @@ export interface CmpSettingsProps {
     settings: AppSettingsDto;
 }
 
-export const CmpSettings: React.FC<CmpSettingsProps> = ({ settings }) => {
+const areEqual = (prev: CmpSettingsProps, next: CmpSettingsProps) => equal(prev.settings, next.settings);
+
+export const CmpSettings = React.memo(function CmpSettings({ settings }: CmpSettingsProps) {
     return (
         <Box
             sx={{
@@ -25,4 +29,4 @@ export const CmpSettings: React.FC<CmpSettingsProps> = ({ settings }) => {
             <ValueLabel label="Stop delay" value={String(settings.stop_pump_delay) + " s"} />
         </Box>
     );
-};
+}, areEqual);

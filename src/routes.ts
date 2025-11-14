@@ -6,4 +6,7 @@ export function isSameRoute(pathname: string, route: string): boolean {
 export const routes = {
     home: "/",
     status: "/status",
+    appSettings: "/settings_app",
+    pressureSettings: "/settings_pressure",
+    additionalSettings: "/settings_additional",
 } as const;

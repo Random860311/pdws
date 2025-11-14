@@ -2,7 +2,20 @@ import { subscribe, emitAsync, unsubscribe } from "./socket";
 import type { AppEventKey, AppEventValue } from "./socket";
 import { AppEvent } from "./socket-events";
 
-import type { ResponseDto, AppEventDto, StationDto, AppSettingsDto, ContactorDto, PumpDto, SensorDto, SystemDto, IOStatusDto, AnalogIODto, DigitalIODto } from "./dto";
+import type {
+    ResponseDto,
+    AppEventDto,
+    StationDto,
+    AppSettingsDto,
+    ContactorDto,
+    PumpDto,
+    SensorDto,
+    SensorConfigDto,
+    SystemDto,
+    IOStatusDto,
+    AnalogIODto,
+    DigitalIODto,
+} from "./dto";
 
 import { useApiRunner, useApiCall } from "./utils";
 
@@ -19,6 +32,7 @@ export type {
     ContactorDto,
     PumpDto,
     SensorDto,
+    SensorConfigDto,
     SystemDto,
     IOStatusDto,
     AnalogIODto,

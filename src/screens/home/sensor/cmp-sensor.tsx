@@ -1,4 +1,6 @@
 import { Box, Typography } from "@mui/material";
+import equal from "fast-deep-equal";
+import React from "react";
 import { SensorDto } from "src/api/dto";
 import { PipeHorizontal, PipeTeeUp, PressureTransmitter } from "src/assets";
 
@@ -6,7 +8,9 @@ export interface SensorProps {
     sensor: SensorDto;
 }
 
-export const CmpSensor: React.FC<SensorProps> = ({ sensor }) => {
+const areEqual = (prev: SensorProps, next: SensorProps) => equal(prev.sensor, next.sensor);
+
+export const CmpSensor = React.memo(function CmpSensor({ sensor }: SensorProps) {
     return (
         <Box
             sx={{
@@ -33,4 +37,4 @@ export const CmpSensor: React.FC<SensorProps> = ({ sensor }) => {
             </Box>
         </Box>
     );
-};
+}, areEqual);

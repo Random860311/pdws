@@ -26,6 +26,8 @@ export interface SensorConfigDto extends DeviceDto {
 
     is_high_high_critical: boolean;
     is_low_low_critical: boolean;
+
+    adjustment: number;
 }
 
 export interface SensorDto extends SensorConfigDto {

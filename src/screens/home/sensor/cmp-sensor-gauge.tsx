@@ -40,7 +40,7 @@ export const CmpGaugeSensor: React.FC<SensorGaugeProps> = ({ sensor }) => {
                 height: "fit-content",
             }}
         >
-            <VerticalFillGauge value={sensor.value_scaled} max={sensor.value_scaled_max} min={sensor.value_scaled_min} height={height} />
+            <VerticalFillGauge value={sensor.value_scaled} max={sensor.value_scaled_max} min={sensor.value_scaled_min} height={height} width={10} />
             <Box
                 ref={paramsRef}
                 sx={{

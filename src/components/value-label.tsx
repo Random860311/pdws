@@ -1,27 +1,28 @@
 import React from "react";
-import { Typography, FormLabel, Box, Theme, SxProps } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import equal from "fast-deep-equal";
 
 export interface ValueLabelProps {
     value?: string;
     color?: string;
     label: string;
-    textSize?: number;
-    sx?: SxProps<Theme>;
 }
 
-export const ValueLabel: React.FC<ValueLabelProps> = ({ value, label, color, sx = {} }) => {
+const areEqual = (prev: ValueLabelProps, next: ValueLabelProps) => equal(prev.value, next.value) && equal(prev.color, next.color) && equal(prev.label, next.label);
+
+export const ValueLabel = React.memo(function ValueLabel({ value, label, color }: ValueLabelProps) {
     if (value) {
         return (
-            <Box sx={{ ...sx, ...{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 1, width: "100%" } }}>
-                <FormLabel component="legend" sx={{ width: "fit-content", textAlign: "start", color: color }}>
+            <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 1, width: "100%", mt: "auto" }}>
+                <Typography variant="body2" sx={{ width: "fit-content", textAlign: "start", color: "gray" }}>
                     {label}:
-                </FormLabel>
-                <Typography variant="body1" sx={{ width: "fit-content", textAlign: "end", color: color, fontWeight: "bold" }}>
+                </Typography>
+                <Typography variant="body2" sx={{ width: "fit-content", textAlign: "end", color: color, fontWeight: "bold" }}>
                     {value}
                 </Typography>
             </Box>
         );
     }
     return <Outlet />;
-};
+}, areEqual);

@@ -7,5 +7,6 @@ import { ValueLabel } from "./value-label";
 import { VerticalFillGauge } from "./vertical-fill-gauge";
 import { Led } from "./led";
 import { ValueLabelLed } from "./value-label-led";
+import { CmpTextField, CmpSwitchField } from "./form";
 
-export { ErrorBoundary, DrawerMenu, TopAppBar, LedLabel, CustomRadioGroup, ValueLabel, VerticalFillGauge, Led, ValueLabelLed };
+export { ErrorBoundary, DrawerMenu, TopAppBar, LedLabel, CustomRadioGroup, ValueLabel, VerticalFillGauge, Led, ValueLabelLed, CmpTextField, CmpSwitchField };

@@ -1,2 +1,3 @@
-import { useStation, useDigitalInputs, useAnalogInputs } from "./station-service";
-export { useStation, useDigitalInputs, useAnalogInputs };
+import { useStation } from "./station-service";
+import { useDeepCompareMemo } from "./useDeepCompareMemo";
+export { useStation, useDeepCompareMemo };

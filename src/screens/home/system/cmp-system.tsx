@@ -1,41 +1,9 @@
-import { Box, Button, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import equal from "fast-deep-equal";
+import React from "react";
 import { SystemDto } from "src/api/dto";
 import { PipeHorizontal, PipeTeeRight, PumpDefault, PumpError, PumpRunning } from "src/assets";
 import { LedLabel, ValueLabel } from "src/components";
-
-function renderPump(sys: SystemDto) {
-    if (sys.has_alarm) return <PumpError height={100} width={40} />;
-    if (sys.status === 1) {
-        return <PumpRunning height={100} width={40} />;
-    }
-    return <PumpDefault height={100} width={40} />;
-}
-
-function renderPriority(sys: SystemDto): "Lead" | "Lag" | "Lag 2" | "Lag 3" | "Out" {
-    switch (sys.priority) {
-        case 0:
-            return "Lead";
-        case 1:
-            return "Lag";
-        case 2:
-            return "Lag 2";
-        case 3:
-            return "Lag 3";
-        default:
-            return "Out";
-    }
-}
-
-function renderMode(sys: SystemDto): "Hand" | "Auto" | "Off" {
-    switch (sys.mode) {
-        case 1:
-            return "Hand";
-        case 2:
-            return "Auto";
-        default:
-            return "Off";
-    }
-}
 
 export interface SystemProps {
     sys: SystemDto;
@@ -44,7 +12,9 @@ export interface SystemProps {
     onSetOff?: () => void;
 }
 
-export const CmpSystem: React.FC<SystemProps> = ({ sys, onSetHand, onSetOff, onSetAuto }) => {
+const areEqual = (prev: SystemProps, next: SystemProps) => equal(prev.sys, next.sys);
+
+export const CmpSystem = React.memo(function CmpSystem({ sys, onSetHand, onSetOff, onSetAuto }: SystemProps) {
     return (
         <Box
             sx={{
@@ -86,13 +56,13 @@ export const CmpSystem: React.FC<SystemProps> = ({ sys, onSetHand, onSetOff, onS
                 <LedLabel label="Call to Run:" color={sys.call_to_run ? "green" : "gray"} />
                 <LedLabel label="Running:" color={sys.status === 1 ? "green" : "gray"} />
                 <LedLabel label="Faulted:" color={sys.has_alarm ? "red" : "gray"} />
-                <ValueLabel label="Priority" value={renderPriority(sys)} sx={{ mt: "auto" }} />
+                <ValueLabel label="Priority" value={renderPriority(sys)} />
             </Box>
             <ToggleButtonGroup
                 orientation="vertical"
                 exclusive
                 value={renderMode(sys)}
-                sx={{ paddingLeft: "8px", "& .MuiToggleButton-root": { width: "100%", height: "32px" }, gap: 1, pl: 1 }}
+                sx={{ paddingLeft: "8px", "& .MuiToggleButton-root": { width: "100%", height: "32px", fontSize: "12px" }, gap: 1, pl: 1 }}
             >
                 <ToggleButton value="Hand" onClick={onSetHand ?? undefined}>
                     Hand
@@ -106,4 +76,38 @@ export const CmpSystem: React.FC<SystemProps> = ({ sys, onSetHand, onSetOff, onS
             </ToggleButtonGroup>
         </Box>
     );
-};
+}, areEqual);
+
+function renderPump(sys: SystemDto) {
+    if (sys.has_alarm) return <PumpError height={100} width={40} />;
+    if (sys.status === 1) {
+        return <PumpRunning height={100} width={40} />;
+    }
+    return <PumpDefault height={100} width={40} />;
+}
+
+function renderPriority(sys: SystemDto): "Lead" | "Lag" | "Lag 2" | "Lag 3" | "Out" {
+    switch (sys.priority) {
+        case 0:
+            return "Lead";
+        case 1:
+            return "Lag";
+        case 2:
+            return "Lag 2";
+        case 3:
+            return "Lag 3";
+        default:
+            return "Out";
+    }
+}
+
+function renderMode(sys: SystemDto): "Hand" | "Auto" | "Off" {
+    switch (sys.mode) {
+        case 1:
+            return "Hand";
+        case 2:
+            return "Auto";
+        default:
+            return "Off";
+    }
+}

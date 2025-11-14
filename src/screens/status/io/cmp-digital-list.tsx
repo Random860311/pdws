@@ -13,7 +13,6 @@ export interface DigitalListProps {
 const areEqual = (prev: DigitalListProps, next: DigitalListProps) => prev.label === next.label && equal(prev.list, next.list);
 
 export const DigitalListStatus = React.memo(function DigitalListStatus({ label, list }: DigitalListProps) {
-    console.log("DigitalListStatus");
     return (
         <Box
             sx={{

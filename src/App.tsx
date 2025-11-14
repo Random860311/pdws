@@ -6,7 +6,7 @@ import { DrawerMenu, ErrorBoundary, TopAppBar } from "./components";
 import { GlobalErrorProvider, LayoutCtx, LoadingProvider } from "./context";
 import { routes } from "./routes";
 import { LoadingDialog } from "./dialogs";
-import { HomeScreen, StatusScreen } from "./screens";
+import { AdditionalSensorSettingsScreen, AppSettingsScreen, HomeScreen, PressureSettingsScreen, StatusScreen } from "./screens";
 
 export const AppContent = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -31,14 +31,23 @@ export const AppContent = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                width: "100%",
-                height: "100%",
+                width: "800px",
+                height: "480px",
             }}
         >
             <TopAppBar onMenuClick={() => setDrawerOpen(true)} actions={actions} title={title} />
             <Toolbar /> {/* Spacer to push content below fixed AppBar */}
             <DrawerMenu open={drawerOpen} onClose={() => setDrawerOpen(false)} onNavigate={(route) => navigate(route)} />
-            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%" }}>
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "100%",
+                    py: 1,
+                }}
+            >
                 <Outlet context={ctx} />
             </Box>
         </Box>
@@ -59,6 +68,9 @@ function App() {
                                         <Route element={<AppContent />}>
                                             <Route index path={routes.home} element={<HomeScreen />} />
                                             <Route path={routes.status} element={<StatusScreen />} />
+                                            <Route path={routes.appSettings} element={<AppSettingsScreen />} />
+                                            <Route path={routes.pressureSettings} element={<PressureSettingsScreen />} />
+                                            <Route path={routes.additionalSettings} element={<AdditionalSensorSettingsScreen />} />
                                             {/* Add more routes */}
                                         </Route>
                                     </Routes>

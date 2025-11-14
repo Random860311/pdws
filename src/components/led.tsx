@@ -1,10 +1,15 @@
 import { Box } from "@mui/material";
+import equal from "fast-deep-equal";
+import React from "react";
 
 export interface LedProps {
     color: "green" | "red" | "yellow" | "gray";
     size?: number;
 }
-export const Led: React.FC<LedProps> = ({ color, size = 16 }) => {
+
+const areEqual = (prev: LedProps, next: LedProps) => equal(prev.color, next.color) && equal(prev.size, next.size);
+
+export const Led = React.memo(function Led({ color, size = 16 }: LedProps) {
     const colorMap: Record<string, string> = {
         green: "#4caf50",
         red: "#f44336",
@@ -23,4 +28,4 @@ export const Led: React.FC<LedProps> = ({ color, size = 16 }) => {
             }}
         />
     );
-};
+}, areEqual);
