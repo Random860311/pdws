@@ -8,7 +8,7 @@ import { VerticalFillGauge } from "./vertical-fill-gauge";
 import { Led } from "./led";
 import { ValueLabelLed } from "./value-label-led";
 import { CmpTextField, CmpSwitchField } from "./form";
-import { renderSystemPump, renderSystemPriority, renderSystemMode, CmpSystemStatus, CmpSystemActions, CmpSystem, CmpSystemOperationTime } from "./system";
+import { renderSystemPump, renderSystemPriority, renderSystemMode, CmpSystemStatus, CmpSystemActions, CmpSystem, CmpSystemOperationTime, CmpSystemAlarm } from "./system";
 
 export {
     ErrorBoundary,
@@ -29,4 +29,5 @@ export {
     CmpSystemActions,
     CmpSystem,
     CmpSystemOperationTime,
+    CmpSystemAlarm,
 };

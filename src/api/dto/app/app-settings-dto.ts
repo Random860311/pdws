@@ -6,4 +6,5 @@ export interface AppSettingsDto extends BaseDto {
     system_count: number;
     start_pump_delay: number;
     stop_pump_delay: number;
+    system_fail_to_start_delay: number;
 }

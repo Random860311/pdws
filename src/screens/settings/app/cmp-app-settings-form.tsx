@@ -14,6 +14,7 @@ const AppSettingsSchema = z
         system_count: z.coerce.number().int().min(1, "At least 1 system"),
         start_pump_delay: z.coerce.number().int().min(0, "Must be ≥ 0"),
         stop_pump_delay: z.coerce.number().int().min(0, "Must be ≥ 0"),
+        system_fail_to_start_delay: z.coerce.number().int().min(0, "Must be ≥ 0"),
     })
     .loose();
 
@@ -32,6 +33,7 @@ function normalizeSettings(dto?: Partial<AppSettingsDto>): AppSettingsInput {
         system_count: dto?.system_count ?? "",
         start_pump_delay: dto?.start_pump_delay ?? "",
         stop_pump_delay: dto?.stop_pump_delay ?? "",
+        system_fail_to_start_delay: dto?.system_fail_to_start_delay ?? "",
     };
 }
 
@@ -89,6 +91,7 @@ export const CmpAppSettingsForm = React.memo(function CmpAppSettingsForm({ defau
                         <CmpTextField name="system_count" label="System Count" type="number" />
                         <CmpTextField name="start_pump_delay" label="Start Pump Delay" type="number" />
                         <CmpTextField name="stop_pump_delay" label="Stop Pump Delay" type="number" />
+                        <CmpTextField name="system_fail_to_start_delay" label="Fail to start delay" type="number" />
                     </Box>
                     <Button type="submit" disabled={isSubmitting} sx={{ width: "fit-content", alignSelf: "end" }}>
                         {isSubmitting ? "Saving..." : "Save"}
