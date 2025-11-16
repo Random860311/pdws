@@ -6,7 +6,16 @@ export function isSameRoute(pathname: string, route: string): boolean {
 export const routes = {
     home: "/",
     status: "/status",
-    appSettings: "/settings_app",
-    pressureSettings: "/settings_pressure",
-    additionalSettings: "/settings_additional",
+
+    systemsRoot: "/systems",
+    systems: {
+        path: "/systems/:id",
+        build: (id: number) => `/systems/${id}`,
+    },
+
+    settingsRoot: "/settings",
+    settings: {
+        path: "/settings/:type", // used in <Route>
+        build: (type: "app" | "pressure" | "additional") => `/settings/${type}`, // used in navigate()
+    },
 } as const;

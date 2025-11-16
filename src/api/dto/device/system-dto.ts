@@ -4,6 +4,7 @@ import { RunnableDto } from "./runnable-dto";
 
 export interface SystemDto extends RunnableDto {
     mode: number;
+    remote_mode: number;
     priority: number;
     priority_auto: number;
     priority_hand: number;

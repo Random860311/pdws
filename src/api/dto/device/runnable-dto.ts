@@ -6,4 +6,8 @@ export interface RunnableDto extends DeviceDto {
     can_run_auto: boolean;
     call_to_run: boolean;
     alarm_fail_to_start: boolean;
+    emergency_stop: boolean;
+    run_time_current: number;
+    run_time_last: number;
+    run_time_total: number;
 }

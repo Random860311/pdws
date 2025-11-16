@@ -2,12 +2,22 @@ import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import { PipeCurveRight, PipeHorizontal, PipeVertical } from "src/assets";
 import { useStation } from "src/hooks/station-service";
-import { System } from "./system";
+import { CmpHomeSystem } from "./system";
 import { CmpGaugeSensor, CmpSensor } from "./sensor";
 import { CmpSettings } from "./settings";
+import { LedLabel } from "src/components";
+import { useAppLayout } from "src/context";
+import { useEffect } from "react";
 
 export const HomeScreen: React.FC = () => {
     const { station, setSystemMode } = useStation();
+    const { setTitle } = useAppLayout();
+
+    useEffect(() => {
+        setTitle("Home");
+        return () => setTitle(null);
+    }, [setTitle]);
+
     if (station == null) return <Outlet />;
 
     return (
@@ -15,7 +25,7 @@ export const HomeScreen: React.FC = () => {
             sx={{
                 display: "flex",
                 flexDirection: "row",
-                alignItems: "center",
+
                 height: "fit-content",
                 width: "fit-content",
                 gap: 2,
@@ -36,7 +46,7 @@ export const HomeScreen: React.FC = () => {
 
                     <Box sx={{ display: "flex", flexDirection: "column", gridColumn: 1, gridRow: 1, minWidth: "360px" }}>
                         {station.systems.map((sys, i) => (
-                            <System
+                            <CmpHomeSystem
                                 key={i}
                                 sys={sys}
                                 onSetHand={() => setSystemMode(sys.device_id, 1)}
@@ -59,7 +69,17 @@ export const HomeScreen: React.FC = () => {
                 </Box>
             </Box>
 
-            <CmpGaugeSensor sensor={station.pressure_sensor} />
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-end",
+                    gap: 3,
+                }}
+            >
+                <LedLabel label="Emergency Stop:" color={station.emergency_stop ? "red" : "gray"} size={36} />
+                <CmpGaugeSensor sensor={station.pressure_sensor} />
+            </Box>
         </Box>
     );
 };

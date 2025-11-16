@@ -1,3 +1,4 @@
-import { CmpSensorSettingsForm, PressureSettingsScreen, AdditionalSensorSettingsScreen } from "./sensor";
+import { CmpSensorSettingsForm, SensorSettingsScreen } from "./sensor";
 import { AppSettingsScreen, CmpAppSettingsForm } from "./app";
-export { AppSettingsScreen, CmpAppSettingsForm, CmpSensorSettingsForm, PressureSettingsScreen, AdditionalSensorSettingsScreen };
+import { SettingsScreen } from "./settings-screen";
+export { AppSettingsScreen, CmpAppSettingsForm, CmpSensorSettingsForm, SettingsScreen, SensorSettingsScreen };

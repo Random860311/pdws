@@ -18,18 +18,32 @@ type MenuItem = { label: string; route: string } | { label: string; children: { 
 
 const menuItems: MenuItem[] = [
     { label: "Home", route: routes.home },
-    { label: "Status", route: routes.status },
+    {
+        label: "Systems",
+        children: [
+            { label: "Pump 1", route: routes.systems.build(1) },
+            { label: "Pump 2", route: routes.systems.build(2) },
+            { label: "Pump 3", route: routes.systems.build(3) },
+        ],
+    },
     {
         label: "Settings",
         children: [
-            { label: "App Settings", route: routes.appSettings },
-            { label: "Pressure sensor", route: routes.pressureSettings },
-            { label: "Additional sensor", route: routes.additionalSettings },
+            { label: "App Settings", route: routes.settings.build("app") },
+            { label: "Pressure sensor", route: routes.settings.build("pressure") },
+            { label: "Additional sensor", route: routes.settings.build("additional") },
         ],
     },
+    { label: "Status", route: routes.status },
 ];
 
 export const DrawerMenu: React.FC<DrawerMenuProps> = ({ open, onClose, onNavigate }) => {
+    const handleClick = (route?: string) => {
+        if (!route) return;
+        onNavigate(route);
+        onClose();
+    };
+
     return (
         <Drawer open={open} onClose={onClose}>
             <List sx={{ width: 250 }}>
@@ -38,12 +52,7 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ open, onClose, onNavigat
                     if ("route" in item) {
                         return (
                             <ListItem key={index} disablePadding>
-                                <ListItemButton
-                                    onClick={() => {
-                                        onNavigate(item.route);
-                                        onClose();
-                                    }}
-                                >
+                                <ListItemButton onClick={() => handleClick(item.route)}>
                                     <ListItemText primary={item.label} />
                                 </ListItemButton>
                             </ListItem>
@@ -61,10 +70,7 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ open, onClose, onNavigat
                                 <ListItem key={`${index}-${childIndex}`} disablePadding>
                                     <ListItemButton
                                         sx={{ pl: 4 }} // indent children
-                                        onClick={() => {
-                                            onNavigate(child.route);
-                                            onClose();
-                                        }}
+                                        onClick={() => handleClick(child.route)}
                                     >
                                         <ListItemText primary={child.label} />
                                     </ListItemButton>

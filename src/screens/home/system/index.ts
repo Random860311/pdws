@@ -1,2 +1,2 @@
-import { CmpSystem } from "./cmp-system";
-export { CmpSystem as System };
+import { CmpHomeSystem } from "./cmp-home-system";
+export { CmpHomeSystem };

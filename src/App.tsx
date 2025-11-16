@@ -6,7 +6,7 @@ import { DrawerMenu, ErrorBoundary, TopAppBar } from "./components";
 import { GlobalErrorProvider, LayoutCtx, LoadingProvider } from "./context";
 import { routes } from "./routes";
 import { LoadingDialog } from "./dialogs";
-import { AdditionalSensorSettingsScreen, AppSettingsScreen, HomeScreen, PressureSettingsScreen, StatusScreen } from "./screens";
+import { HomeScreen, SettingsScreen, StatusScreen, SystemsScreen } from "./screens";
 
 export const AppContent = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -68,9 +68,8 @@ function App() {
                                         <Route element={<AppContent />}>
                                             <Route index path={routes.home} element={<HomeScreen />} />
                                             <Route path={routes.status} element={<StatusScreen />} />
-                                            <Route path={routes.appSettings} element={<AppSettingsScreen />} />
-                                            <Route path={routes.pressureSettings} element={<PressureSettingsScreen />} />
-                                            <Route path={routes.additionalSettings} element={<AdditionalSensorSettingsScreen />} />
+                                            <Route path={routes.settings.path} element={<SettingsScreen />} />
+                                            <Route path={routes.systems.path} element={<SystemsScreen />} />
                                             {/* Add more routes */}
                                         </Route>
                                     </Routes>

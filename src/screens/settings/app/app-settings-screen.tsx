@@ -2,9 +2,17 @@ import { Box } from "@mui/material";
 import { useStation } from "src/hooks";
 import { CmpAppSettingsForm } from "./cmp-app-settings-form";
 import { AppSettingsDto } from "src/api";
+import { useAppLayout } from "src/context";
+import { useEffect } from "react";
 
 export const AppSettingsScreen: React.FC = () => {
     const { station, setStationConfig } = useStation();
+    const { setTitle } = useAppLayout();
+
+    useEffect(() => {
+        setTitle("App Settings");
+        return () => setTitle(null);
+    }, [setTitle]);
 
     const handleAppSubmit = async (dto: AppSettingsDto): Promise<void> => {
         console.log(JSON.stringify(dto));
@@ -28,4 +36,3 @@ export const AppSettingsScreen: React.FC = () => {
         </Box>
     );
 };
-//

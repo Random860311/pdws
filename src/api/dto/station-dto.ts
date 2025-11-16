@@ -9,4 +9,5 @@ export interface StationDto extends BaseDto {
     additional_sensor?: SensorDto;
     io_status: IOStatusDto;
     app_settings: AppSettingsDto;
+    emergency_stop: boolean;
 }
