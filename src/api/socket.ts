@@ -8,11 +8,8 @@ import { AppEvent } from "./socket-events";
     transports: ["websocket"],
 }); */
 
-const socket = io("https://192.168.0.104:8443", {
+const socket = io(undefined, {
     transports: ["websocket"],
-    // path: "/socket.io", // uncomment if your server uses a custom path
-    // withCredentials: true, // only if you rely on cookies
-    // auth: { token: "<jwt or similar>" }, // if you pass auth
 });
 
 type Callback<T = any> = (data: T) => void;
