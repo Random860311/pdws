@@ -1,0 +1,42 @@
+# Create the service
+sudo nano /etc/systemd/system/pdws-web.service
+
+# Default service settings
+[Unit]
+Description=PDWS Web Client (npm start)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=amed
+WorkingDirectory=/home/amed/Desktop/WorkSpace/PDWS_Web/pdws
+
+# Run npm start in a login shell so PATH, nvm, etc. are loaded
+ExecStart=/usr/bin/bash -lc "npm start"
+
+# Restart if it crashes
+Restart=on-failure
+RestartSec=5
+
+# Optional: make dev server reachable from other devices and fix port
+Environment=HOST=0.0.0.0
+Environment=PORT=3000
+
+[Install]
+WantedBy=multi-user.target
+
+# Enable and start it
+sudo systemctl daemon-reload
+sudo systemctl enable pdws-web.service     # auto-start on boot
+sudo systemctl start pdws-web.service      # start now
+
+# Check if it’s running
+sudo systemctl status pdws-web.service
+
+# Live log:
+sudo journalctl -u pdws-web.service -f
+
+# start / stop
+sudo systemctl stop pdws-web.service
+sudo systemctl restart pdws-web.service

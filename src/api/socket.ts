@@ -8,7 +8,7 @@ import { AppEvent } from "./socket-events";
     transports: ["websocket"],
 }); */
 
-const socket = io(undefined, {
+const socket = io("http://192.168.11.143:8443", {
     transports: ["websocket"],
 });
 
