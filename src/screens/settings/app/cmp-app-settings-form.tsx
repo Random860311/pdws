@@ -30,7 +30,7 @@ function normalizeSettings(dto?: Partial<AppSettingsDto>): AppSettingsInput {
     return {
         level_set_point: dto?.level_set_point ?? "",
         level_offset: dto?.level_offset ?? "",
-        system_count: dto?.system_count ?? "",
+        system_count: dto?.system_count ?? 3,
         start_pump_delay: dto?.start_pump_delay ?? "",
         stop_pump_delay: dto?.stop_pump_delay ?? "",
         system_fail_to_start_delay: dto?.system_fail_to_start_delay ?? "",
@@ -88,7 +88,7 @@ export const CmpAppSettingsForm = React.memo(function CmpAppSettingsForm({ defau
                         {/* Names MUST match the schema keys */}
                         <CmpTextField name="level_set_point" label="Level Set Point" type="number" />
                         <CmpTextField name="level_offset" label="Level Offset" type="number" />
-                        <CmpTextField name="system_count" label="System Count" type="number" />
+
                         <CmpTextField name="start_pump_delay" label="Start Pump Delay" type="number" />
                         <CmpTextField name="stop_pump_delay" label="Stop Pump Delay" type="number" />
                         <CmpTextField name="system_fail_to_start_delay" label="Fail to start delay" type="number" />
@@ -101,3 +101,4 @@ export const CmpAppSettingsForm = React.memo(function CmpAppSettingsForm({ defau
         </Paper>
     );
 }, areEqual);
+//                        <CmpTextField name="system_count" label="System Count" type="number" />
