@@ -1,0 +1,38 @@
+# The sequence will be:
+# 1- System boots, your Python + TS services start.
+# 2- Autostart runs the script.
+# 3- Script sleep 30 → gives services time to come up.
+# 4- Chromium opens in kiosk mode once sleep is done, and localhost:3000 should already be responding.
+#
+# If 30 seconds is still too short or unnecessarily long, just tweak that value in the script.
+
+# Config file located at:
+/home/amed/.config/autostart/pdws-kiosk.desktop
+
+# Initial config, Point the autostart .desktop file to the script
+
+[Desktop Entry]
+Type=Application
+Name=PDWS Kiosk
+Comment=Start PDWS web UI in fullscreen
+Exec=/home/amed/start-pdws-kiosk.sh
+X-GNOME-Autostart-enabled=true
+
+# ---------------------------------------------------
+
+# Executable script to wait until localhost and app is ready
+
+/home/amed/start-pdws-kiosk.sh
+# Initial config:
+
+#!/bin/bash
+
+# Wait some time for backend + web to be up
+sleep 30
+
+# Then start Chromium in kiosk mode
+chromium --kiosk --incognito --noerrdialogs --disable-infobars \
+  --autoplay-policy=no-user-gesture-required http://localhost:3000
+
+# Make it executable:  
+chmod +x /home/amed/start-pdws-kiosk.sh
